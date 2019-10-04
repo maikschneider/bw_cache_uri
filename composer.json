@@ -20,5 +20,10 @@
     "platform": {
       "php": "7.2"
     }
+  },
+  "autoload": {
+    "psr-4": {
+      "Blueways\\BwCacheUri\\": "Classes/"
+    }
   }
 }
