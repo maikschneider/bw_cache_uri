@@ -1,0 +1,24 @@
+{
+  "name": "blueways/bw-cache-uri",
+  "homepage": "https://blueways.de",
+  "license": "proprietary",
+  "keywords": [
+    "TYPO3 CMS"
+  ],
+  "require": {
+    "typo3/cms-base-distribution": "^10.1"
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": "public"
+    }
+  },
+  "config": {
+    "bin-dir": "bin",
+    "vendor-dir": "vendor",
+    "platform": {
+      "php": "7.2"
+    }
+  }
+}
