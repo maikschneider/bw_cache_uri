@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-10-04UTC10:51:370">
+		<header>
+			<authorName>Maik Schneider</authorName>
+			<authorEmail>m.schneider@blueways.de</authorEmail>
+		</header>
+		<body>
+			<trans-unit id="tca.uri">
+				<source>URL</source>
+			</trans-unit>
+			<trans-unit id="tca.palette">
+				<source>Parsing options</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
