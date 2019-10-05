@@ -12,6 +12,12 @@
 			<trans-unit id="tca.palette">
 				<source>Parsing options</source>
 			</trans-unit>
+			<trans-unit id="message.success.title">
+				<source>Parsing success</source>
+			</trans-unit>
+			<trans-unit id="message.success.body">
+				<source>The content of the URL was parsed and saved</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
