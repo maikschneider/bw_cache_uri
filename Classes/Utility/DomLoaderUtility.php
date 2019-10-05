@@ -80,7 +80,7 @@ class DomLoaderUtility
 
     public function crawlDom()
     {
-        if (!$this->filter) {
+        if (!$this->filter || !$this->dom) {
             return;
         }
 
