@@ -18,9 +18,11 @@ class TCEmainHook
         if ($table === 'tt_content' && $id && $dataHandler->datamap['tt_content'][$id]['CType'] === 'html' && $dataHandler->datamap['tt_content'][$id]['dom_uri'] !== "") {
             $uri = $dataHandler->datamap['tt_content'][$id]['dom_uri'];
             $filter = $dataHandler->datamap['tt_content'][$id]['dom_filter'];
+            $processor = $dataHandler->datamap['tt_content'][$id]['dom_processor'];
 
             $domLoader = GeneralUtility::makeInstance(DomLoaderUtility::class);
             $domLoader->setFilter($filter);
+            $domLoader->setProcessor($processor);
             $html = $domLoader->getDomFromUri($uri);
 
             if ($html !== '') {

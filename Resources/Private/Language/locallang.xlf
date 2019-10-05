@@ -15,6 +15,15 @@
 			<trans-unit id="tca.palette">
 				<source>Parsing options</source>
 			</trans-unit>
+			<trans-unit id="tca.processor">
+				<source>Post processor</source>
+			</trans-unit>
+			<trans-unit id="tca.hooks.none">
+				<source>None</source>
+			</trans-unit>
+			<trans-unit id="tca.hooks.json">
+				<source>Convert to JSON</source>
+			</trans-unit>
 			<trans-unit id="message.success.title">
 				<source>Parsing success</source>
 			</trans-unit>

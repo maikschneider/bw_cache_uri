@@ -2,13 +2,14 @@
 
 namespace Blueways\BwCacheUri\Utility;
 
-use Symfony\Component\CssSelector\CssSelectorConverter;
+use Blueways\BwCacheUri\Hooks\DomPostProcessorInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class DomLoaderUtility
 {
@@ -19,17 +20,22 @@ class DomLoaderUtility
 
     protected $filter;
 
-    protected function loadDom()
+    protected $processor;
+
+    /**
+     * @return mixed
+     */
+    public function getProcessor()
     {
-        $client = HttpClient::create();
-        try {
-            $response = $client->request('GET', $this->uri);
-            $this->dom = $response->getContent();
-        } catch (TransportExceptionInterface $e) {
-        } catch (ClientExceptionInterface $e) {
-        } catch (RedirectionExceptionInterface $e) {
-        } catch (ServerExceptionInterface $e) {
-        }
+        return $this->processor;
+    }
+
+    /**
+     * @param mixed $processor
+     */
+    public function setProcessor($processor)
+    {
+        $this->processor = $processor;
     }
 
     /**
@@ -48,6 +54,30 @@ class DomLoaderUtility
         $this->filter = $filter;
     }
 
+    public function getDomFromUri($uri)
+    {
+        $this->uri = $uri;
+
+        $this->loadDom();
+        $this->crawlDom();
+        $this->processPostProcessor();
+
+        return $this->dom;
+    }
+
+    protected function loadDom()
+    {
+        $client = HttpClient::create();
+        try {
+            $response = $client->request('GET', $this->uri);
+            $this->dom = $response->getContent();
+        } catch (TransportExceptionInterface $e) {
+        } catch (ClientExceptionInterface $e) {
+        } catch (RedirectionExceptionInterface $e) {
+        } catch (ServerExceptionInterface $e) {
+        }
+    }
+
     public function crawlDom()
     {
         if (!$this->filter) {
@@ -59,13 +89,16 @@ class DomLoaderUtility
         $this->dom = $crawler->html('');
     }
 
-    public function getDomFromUri($uri)
+    protected function processPostProcessor()
     {
-        $this->uri = $uri;
+        if (!$this->processor) {
+            return;
+        }
 
-        $this->loadDom();
-        $this->crawlDom();
-
-        return $this->dom;
+        $processor = GeneralUtility::makeInstance($this->processor);
+        if (!$processor instanceof DomPostProcessorInterface) {
+            throw new \RuntimeException('Class "' . $this->processor . '" does not implement Blueways\BwCacheUri\DomPostProcessorInterface');
+        }
+        $this->dom = $processor->process($this->dom);
     }
 }

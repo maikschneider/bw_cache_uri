@@ -1,0 +1,7 @@
+plugin.tx_bwcacheuri.settings {
+	postProcessors {
+		Blueways\BwCacheUri\Hooks\ToJsonHook {
+			label = LLL:EXT:bw_cache_uri/Resources/Private/Language/locallang.xlf:tca.hooks.json
+		}
+	}
+}
