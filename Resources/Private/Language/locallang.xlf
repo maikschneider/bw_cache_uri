@@ -27,6 +27,12 @@
 			<trans-unit id="message.success.body">
 				<source>The content of the URL was parsed and saved</source>
 			</trans-unit>
+			<trans-unit id="task.name">
+				<source>DOM Downloader</source>
+			</trans-unit>
+			<trans-unit id="task.description">
+				<source>Refresh all HTML content elements with a parsing url</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

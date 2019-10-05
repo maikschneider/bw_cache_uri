@@ -8,7 +8,8 @@
   "require": {
     "symfony/http-client": "^4.3",
     "symfony/dom-crawler": "^4.3",
-    "symfony/css-selector": "^4.3"
+    "symfony/css-selector": "^4.3",
+    "typo3/cms-scheduler": "^9.5 || ^10.1"
   },
   "require-dev": {
     "typo3/cms-base-distribution": "^10.1"
