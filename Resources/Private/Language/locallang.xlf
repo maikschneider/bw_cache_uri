@@ -9,6 +9,9 @@
 			<trans-unit id="tca.uri">
 				<source>URL</source>
 			</trans-unit>
+			<trans-unit id="tca.filter">
+				<source>Filter</source>
+			</trans-unit>
 			<trans-unit id="tca.palette">
 				<source>Parsing options</source>
 			</trans-unit>

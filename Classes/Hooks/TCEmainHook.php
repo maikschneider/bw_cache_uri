@@ -17,8 +17,10 @@ class TCEmainHook
     ) {
         if ($table === 'tt_content' && $id && $dataHandler->datamap['tt_content'][$id]['CType'] === 'html' && $dataHandler->datamap['tt_content'][$id]['dom_uri'] !== "") {
             $uri = $dataHandler->datamap['tt_content'][$id]['dom_uri'];
+            $filter = $dataHandler->datamap['tt_content'][$id]['dom_filter'];
 
             $domLoader = GeneralUtility::makeInstance(DomLoaderUtility::class);
+            $domLoader->setFilter($filter);
             $html = $domLoader->getDomFromUri($uri);
 
             if ($html !== '') {
@@ -27,10 +29,10 @@ class TCEmainHook
 
                 $flashMessageService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Messaging\FlashMessageService::class);
                 $message = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(FlashMessage::class,
-                    'LLL:EXT:bw_cache_uri/Resources/Private/Language/locallang.xlf:message.success.body',
-                    'LLL:EXT:bw_cache_uri/Resources/Private/Language/locallang.xlf:message.success.title',
+                    $GLOBALS['LANG']->sL('LLL:EXT:bw_cache_uri/Resources/Private/Language/locallang.xlf:message.success.body'),
+                    $GLOBALS['LANG']->sL('LLL:EXT:bw_cache_uri/Resources/Private/Language/locallang.xlf:message.success.title'),
                     FlashMessage::OK,
-                    true
+                    false
                 );
                 $messageQueue = $flashMessageService->getMessageQueueByIdentifier();
                 $messageQueue->addMessage($message);

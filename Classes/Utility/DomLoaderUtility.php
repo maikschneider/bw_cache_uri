@@ -2,6 +2,7 @@
 
 namespace Blueways\BwCacheUri\Utility;
 
+use Symfony\Component\CssSelector\CssSelectorConverter;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
@@ -31,6 +32,22 @@ class DomLoaderUtility
         }
     }
 
+    /**
+     * @return mixed
+     */
+    public function getFilter()
+    {
+        return $this->filter;
+    }
+
+    /**
+     * @param mixed $filter
+     */
+    public function setFilter($filter)
+    {
+        $this->filter = $filter;
+    }
+
     public function crawlDom()
     {
         if (!$this->filter) {
@@ -38,7 +55,7 @@ class DomLoaderUtility
         }
 
         $crawler = new Crawler($this->dom);
-        $crawler->filter($this->filter);
+        $crawler = $crawler->filter($this->filter);
         $this->dom = $crawler->html('');
     }
 

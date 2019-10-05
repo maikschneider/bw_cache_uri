@@ -23,6 +23,15 @@ $temporaryColumns = array(
             ],
             'softref' => 'typolink'
         ]
+    ],
+    'dom_filter' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:bw_cache_uri/Resources/Private/Language/locallang.xlf:tca.filter',
+        'config' => [
+            'type' => 'input',
+            'size' => 50,
+            'max' => 1024
+        ]
     ]
 );
 
@@ -42,5 +51,5 @@ $temporaryColumns = array(
 
 // 4. Show palette
 $GLOBALS['TCA']['tt_content']['palettes']['parsing_options'] = [
-    'showitem' => 'dom_uri'
+    'showitem' => 'dom_uri,--linebreak--,dom_filter'
 ];
