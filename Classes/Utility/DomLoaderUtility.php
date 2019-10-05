@@ -2,7 +2,7 @@
 
 namespace Blueways\BwCacheUri\Utility;
 
-use Blueways\BwCacheUri\Hooks\DomPostProcessorInterface;
+use Blueways\BwCacheUri\Processor\PostProcessorInterface;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
@@ -10,6 +10,7 @@ use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 class DomLoaderUtility
 {
@@ -96,9 +97,17 @@ class DomLoaderUtility
         }
 
         $processor = GeneralUtility::makeInstance($this->processor);
-        if (!$processor instanceof DomPostProcessorInterface) {
-            throw new \RuntimeException('Class "' . $this->processor . '" does not implement Blueways\BwCacheUri\DomPostProcessorInterface');
+
+        if (!$processor instanceof PostProcessorInterface) {
+            throw new \RuntimeException('Class "' . $this->processor . '" does not implement Blueways\BwCacheUri\Processor\PostProcessorInterface');
         }
-        $this->dom = $processor->process($this->dom);
+
+        // get processor options from typoscript
+        $configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+        $typoscript = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+        $processorOptions = isset($typoscript['plugin.']['tx_bwcacheuri.']) && isset($typoscript['plugin.']['tx_bwcacheuri.']['settings.']['postProcessors.'][$this->processor . '.']['options.']) ? $typoscript['plugin.']['tx_bwcacheuri.']['settings.']['postProcessors.'][$this->processor . '.']['options.'] : [];
+
+        // run processor
+        $this->dom = $processor->process($this->dom, $processorOptions);
     }
 }
