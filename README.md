@@ -20,6 +20,8 @@ See official [packages site](https://packagist.org/packages/blueways/bw-cache-ur
 composer require blueways/bw-cache-uri
 ```
 
+Activate the extension via Extension Manager and add the static TypoScript template
+
 ## Usage
 
 Just create a new HTML-Content Element and add any URL in the parsing options.
