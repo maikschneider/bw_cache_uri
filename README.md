@@ -67,3 +67,12 @@ class MyFancyProcessor implements \Blueways\BwCacheUri\Processor\PostProcessorIn
 
 See [ddev-contrib](https://github.com/drud/ddev-contrib/tree/master/recipes/cronjob) to see how to make the scheduler run locally.
 
+## Examples
+
+### Use Filter to get current weather
+
+![Weather example](Documentation/Images/example1.png)
+
+### Get current Time
+
+![Time example](Documentation/Images/example2.png)
