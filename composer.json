@@ -4,7 +4,14 @@
   "homepage": "https://blueways.de",
   "license": "proprietary",
   "keywords": [
-    "TYPO3 CMS"
+    "typo3",
+    "parser",
+    "crawler",
+    "dom",
+    "rss",
+    "feeds",
+    "atom",
+    "xml"
   ],
   "require": {
     "symfony/http-client": "^4.3",
@@ -33,5 +40,13 @@
     "psr-4": {
       "Blueways\\BwCacheUri\\": "Classes/"
     }
-  }
+  },
+  "authors": [
+    {
+      "name": "Maik Schneider",
+      "email": "m.schneider@blueways.de",
+      "role": "Developer",
+      "homepage": "https://www.blueways.de/"
+    }
+  ]
 }
