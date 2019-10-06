@@ -2,7 +2,7 @@
 
 This extensions extends the TYPO3 content element tt_content with CType 'html' for the functionality of loading remote content.
 
-![Example Image](Documentation/Images/example1.jpg)
+![Example Image](https://bitbucket.org/blueways/bw_cache_uri/raw/ece30077b4590ff1ed2488746d3fb9d75a4bc608/Documentation/Images/example1.jpg)
 
 ## Features
 
@@ -16,7 +16,7 @@ This extensions extends the TYPO3 content element tt_content with CType 'html' f
 
 See official [packages site](https://packagist.org/packages/blueways/bw-cache-uri) for requirements. You can use the [bitbucket issue tracker](https://bitbucket.org/blueways/bw_cache_uri/issues?status=new&status=open) to report errors or feature requests.
 
-```
+```bash
 composer require blueways/bw-cache-uri
 ```
 
@@ -49,7 +49,7 @@ plugin.tx_bwcacheuri.settings.postProcessors {
 
 Your processor class must implement the **PostProcessorInterface**:
 
-```
+```PHP
 <?php
 namespace Vendor\YourExt\Processor;
 
@@ -71,8 +71,8 @@ See [ddev-contrib](https://github.com/drud/ddev-contrib/tree/master/recipes/cron
 
 ### Use Filter to get current weather
 
-![Weather example](Documentation/Images/example1.png)
+![Weather example](https://bitbucket.org/blueways/bw_cache_uri/raw/ece30077b4590ff1ed2488746d3fb9d75a4bc608/Documentation/Images/example1.png)
 
 ### Get current Time
 
-![Time example](Documentation/Images/example2.png)
+![Time example](https://bitbucket.org/blueways/bw_cache_uri/raw/ece30077b4590ff1ed2488746d3fb9d75a4bc608/Documentation/Images/example2.png)
