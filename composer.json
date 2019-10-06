@@ -1,5 +1,6 @@
 {
   "name": "blueways/bw-cache-uri",
+  "type": "typo3-cms-extension",
   "description": "TYPO3 extension to parse remote content and save to tt_content element",
   "homepage": "https://blueways.de",
   "license": "MIT",
