@@ -8,8 +8,8 @@ This extensions extends the TYPO3 content element tt_content with CType 'html' f
 
 * Load and save remote content from URL
 * Filter saved DOM with [CSS selectors](https://symfony.com/doc/current/components/css_selector.html)
-* Manipulate the content with own post-processors
-* Options for individual processors via TypoScript
+* Manipulate the content with custom post-processors (e.g. stripe tags, add wrap,..)
+* Options for processors via TypoScript
 * Scheduler task to refresh content
 
 ## Install
@@ -32,7 +32,7 @@ The DOM Downloader task will refresh the bodytext of all tt_content elements tha
 
 ## Post Processor
 
-After receiving the remote content custom post processors can be applied to transform the content, e.g. to wrap or remove text.
+After receiving the remote content, custom post processors can be applied to transform the content, e.g. to wrap or remove text.
 To register a new processor, add the following TypoScript:
 
 ```

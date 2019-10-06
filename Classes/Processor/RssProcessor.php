@@ -21,15 +21,25 @@ class RssProcessor implements PostProcessorInterface
             $article = $options['itemTemplate'];
             $fields = ['title', 'link', 'description', 'pubDate', 'guid'];
 
+            // get texts
             foreach ($fields as $field) {
                 $node = $parentCrawler->filter($field)->first();
 
                 if (!sizeof($node)) {
                     continue;
                 }
-                $value = $node->first()->text();
-                $marker = '###' . strtoupper($field) . '###';
+                $fields[$field] = $node->first()->text();
+            }
 
+            // add + format date
+            if($fields['pubDate'] && $options['dateFormat']) {
+                $date = new \DateTime($fields['pubDate']);
+                $fields['date'] = $date->format($options['dateFormat']);
+            }
+
+            // replace marker
+            foreach ($fields as $field => $value) {
+                $marker = '###' . strtoupper($field) . '###';
                 $article = str_replace($marker, $value, $article);
             }
 
@@ -37,7 +47,6 @@ class RssProcessor implements PostProcessorInterface
         });
 
         $articles = implode('', $articles);
-
         $articles = str_replace('|', $articles, $options['wrap']);
 
         return $articles;

@@ -1,24 +1,25 @@
 plugin.tx_bwcacheuri {
 	settings {
 		postProcessors {
+			# Remove HTML tags from DOM
 			Blueways\BwCacheUri\Processor\RemoveHtmlProcessor {
 				label = LLL:EXT:bw_cache_uri/Resources/Private/Language/locallang.xlf:tca.hooks.html
 				options {
 					allowed_tags = <div>
 				}
 			}
-
+			# Format XML of RSS feed
 			Blueways\BwCacheUri\Processor\RssProcessor {
 				label = LLL:EXT:bw_cache_uri/Resources/Private/Language/locallang.xlf:tca.hooks.rss
 				options {
 					wrap = <div class="rss">|</div>
 					itemTemplate (
-<div class="rss__item" id="###GUID###">
-	<h3>###TITLE###</h3>
-	<p>###DATE###</p>
-	<p>###DESCRIPTION###</p>
-	<p><a href="###LINK###">more</a></p>
-</div>
+						<div class="rss__item" id="###GUID###">
+							<h3>###TITLE###</h3>
+							<span>###DATE###</span>
+							<p>###DESCRIPTION###</p>
+							<a href="###LINK###">more</a>
+						</div>
 					)
 					dateFormat = d.m.Y
 				}
