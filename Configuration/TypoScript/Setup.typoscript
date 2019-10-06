@@ -7,6 +7,22 @@ plugin.tx_bwcacheuri {
 					allowed_tags = <div>
 				}
 			}
+
+			Blueways\BwCacheUri\Processor\RssProcessor {
+				label = LLL:EXT:bw_cache_uri/Resources/Private/Language/locallang.xlf:tca.hooks.rss
+				options {
+					wrap = <div class="rss">|</div>
+					itemTemplate (
+<div class="rss__item" id="###GUID###">
+	<h3>###TITLE###</h3>
+	<p>###DATE###</p>
+	<p>###DESCRIPTION###</p>
+	<p><a href="###LINK###">more</a></p>
+</div>
+					)
+					dateFormat = d.m.Y
+				}
+			}
 		}
 	}
 }

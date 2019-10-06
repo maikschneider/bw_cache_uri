@@ -24,6 +24,9 @@
 			<trans-unit id="tca.hooks.html">
 				<source>Remove HTML</source>
 			</trans-unit>
+			<trans-unit id="tca.hooks.rss">
+				<source>RSS Parser</source>
+			</trans-unit>
 			<trans-unit id="message.success.title">
 				<source>Parsing success</source>
 			</trans-unit>
