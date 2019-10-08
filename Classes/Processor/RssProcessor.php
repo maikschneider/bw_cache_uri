@@ -19,20 +19,15 @@ class RssProcessor implements PostProcessorInterface
         $articles = $crawler->filter('item')->each(function (Crawler $parentCrawler, $i) use ($options) {
 
             $article = $options['itemTemplate'];
-            $fields = ['title', 'link', 'description', 'pubDate', 'guid'];
+            $fields = [];
 
-            // get texts
-            foreach ($fields as $field) {
-                $node = $parentCrawler->filter($field)->first();
-
-                if (!sizeof($node)) {
-                    continue;
-                }
-                $fields[$field] = $node->first()->text();
+            $children = $parentCrawler->filter('item')->children();
+            foreach ($children as $key => $node) {
+                $fields[$node->tagName] = $node->nodeValue;
             }
 
             // add + format date
-            if($fields['pubDate'] && $options['dateFormat']) {
+            if ($fields['pubDate'] && $options['dateFormat']) {
                 $date = new \DateTime($fields['pubDate']);
                 $fields['date'] = $date->format($options['dateFormat']);
             }
