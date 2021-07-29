@@ -1,8 +1,8 @@
 # DOM Downloader
 
-This extensions extends the TYPO3 content element tt_content with CType 'html' for the functionality of loading remote content.
+This TYPO3 extension extends the tt_content element `HTML` for the functionality of loading and postprocessing remote content.
 
-![Example Image](https://bitbucket.org/blueways/bw_cache_uri/raw/ece30077b4590ff1ed2488746d3fb9d75a4bc608/Documentation/Images/example1.jpg)
+![Example Image](https://bitbucket.org/blueways/bw_cache_uri/raw/master/Documentation/Images/example1.jpg)
 
 ## Features
 
@@ -24,7 +24,7 @@ Activate the extension via Extension Manager and add the static TypoScript templ
 
 ## Usage
 
-Just create a new HTML-Content Element and add any URL in the parsing options.
+Just create a new HTML-Content Element and add any URL in the parsing options. After saving, the remote content is fetched, processed and saved.
 
 ## Scheduler
 
@@ -71,8 +71,8 @@ See [ddev-contrib](https://github.com/drud/ddev-contrib/tree/master/recipes/cron
 
 ### Use Filter to get current weather
 
-![Weather example](https://bitbucket.org/blueways/bw_cache_uri/raw/ece30077b4590ff1ed2488746d3fb9d75a4bc608/Documentation/Images/example1.png)
+![Weather example](https://bitbucket.org/blueways/bw_cache_uri/raw/master/Documentation/Images/example1.png)
 
 ### Get current Time
 
-![Time example](https://bitbucket.org/blueways/bw_cache_uri/raw/ece30077b4590ff1ed2488746d3fb9d75a4bc608/Documentation/Images/example2.png)
+![Time example](https://bitbucket.org/blueways/bw_cache_uri/raw/master/Documentation/Images/example2.png)
