@@ -5,8 +5,8 @@ $EM_CONF[$_EXTKEY] = [
     'category' => 'extension',
     'constraints' => [
         'depends' => [
-            'typo3' => '9.5.0-10.1.99',
-            'fluid_styled_content' => '9.5.4-10.1.99',
+            'typo3' => '9.5.0-10.99.99',
+            'scheduler' => '9.5.0-10.99.99'
         ],
         'conflicts' => [
         ],
