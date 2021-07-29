@@ -18,12 +18,12 @@
     "symfony/http-client": "^4.3",
     "symfony/dom-crawler": "^4.3",
     "symfony/css-selector": "^4.3",
-    "typo3/cms-core": "^9.0 || ^10.0",
-    "typo3/cms-scheduler": "^9.5"
+    "typo3/cms-core": "^9.5 || ^10.0 || ^11.0",
+    "typo3/cms-scheduler": "^9.5 || ^10.0 || ^11.0"
   },
   "require-dev": {
-    "typo3/cms-base-distribution": "^9.5",
-    "helhum/typo3-console": "^5.7"
+    "typo3/cms-base-distribution": "^11.0",
+    "bk2k/bootstrap-package": "12.0.x-dev"
   },
   "extra": {
     "typo3/cms": {

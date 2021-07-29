@@ -1,12 +1,12 @@
 <?php
 $EM_CONF[$_EXTKEY] = [
     'title' => 'DOM Downloader',
-    'description' => 'Download and cache HTML from URI',
+    'description' => 'Download and save data from URI. Use post processors to modify the fetched content.',
     'category' => 'extension',
     'constraints' => [
         'depends' => [
-            'typo3' => '9.5.0-10.99.99',
-            'scheduler' => '9.5.0-10.99.99'
+            'typo3' => '9.5.0-11.99.99',
+            'scheduler' => '9.5.0-11.99.99'
         ],
         'conflicts' => [
         ],
@@ -23,5 +23,5 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'Maik Schneider',
     'author_email' => 'm.schneider@blueways.de',
     'author_company' => 'blueways',
-    'version' => '1.1.2'
+    'version' => '1.1.3'
 ];
