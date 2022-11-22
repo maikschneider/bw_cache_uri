@@ -14,13 +14,14 @@ This TYPO3 extension extends the tt_content element `HTML` for the functionality
 
 ## Install
 
-See official [packages site](https://packagist.org/packages/blueways/bw-cache-uri) for requirements. You can use the [bitbucket issue tracker](https://bitbucket.org/blueways/bw_cache_uri/issues?status=new&status=open) to report errors or feature requests.
+1. Install via composer
 
 ```bash
 composer require blueways/bw-cache-uri
 ```
 
-Activate the extension via Extension Manager and add the static TypoScript template
+2. Include TypoScript template
+
 
 ## Usage
 
