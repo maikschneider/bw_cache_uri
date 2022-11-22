@@ -16,6 +16,7 @@
   "require": {
     "symfony/http-client": "^4.3",
     "symfony/dom-crawler": "^4.3",
+    "symfony/css-selector": "^4.3",
     "typo3/cms-core": "^9.5 || ^10.0 || ^11.0",
     "typo3/cms-scheduler": "^9.5 || ^10.0 || ^11.0"
   },
@@ -54,6 +55,7 @@
       "mkdir -p Libraries",
       "vendor/bin/phar-composer build 'symfony/http-client=4.4.47' Libraries/symfony-http-client.phar",
       "vendor/bin/phar-composer build 'symfony/dom-crawler=4.4.45' Libraries/symfony-dom-crawler.phar",
+      "vendor/bin/phar-composer build 'symfony/css-selector=4.4.44' Libraries/symfony-css-selector.phar",
       "chmod -x Libraries/*"
     ]
   }
