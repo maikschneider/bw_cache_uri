@@ -2,7 +2,6 @@
   "name": "blueways/bw-cache-uri",
   "type": "typo3-cms-extension",
   "description": "TYPO3 extension to parse remote content and save to tt_content element",
-  "homepage": "https://blueways.de",
   "license": "MIT",
   "keywords": [
     "typo3",
@@ -32,12 +31,6 @@
       "extension-key": "bw_cache_uri"
     }
   },
-  "config": {
-    "vendor-dir": "vendor",
-    "platform": {
-      "php": "7.4"
-    }
-  },
   "autoload": {
     "psr-4": {
       "Blueways\\BwCacheUri\\": "Classes/"
@@ -46,9 +39,14 @@
   "authors": [
     {
       "name": "Maik Schneider",
-      "email": "m.schneider@blueways.de",
-      "role": "Developer",
-      "homepage": "https://www.blueways.de/"
+      "email": "schneider.maik@me.com",
+      "role": "Developer"
     }
-  ]
+  ],
+  "config": {
+    "allow-plugins": {
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true
+    }
+  }
 }
