@@ -22,7 +22,8 @@
   },
   "require-dev": {
     "typo3/cms-base-distribution": "^11.0",
-    "bk2k/bootstrap-package": "12.0.x-dev"
+    "bk2k/bootstrap-package": "12.0.x-dev",
+    "clue/phar-composer":"^1.0"
   },
   "extra": {
     "typo3/cms": {
@@ -48,5 +49,14 @@
       "typo3/cms-composer-installers": true,
       "typo3/class-alias-loader": true
     }
+  },
+  "scripts": {
+    "create-libs": [
+      "mkdir -p Libraries",
+      "vendor/bin/phar-composer build 'symfony/http-client=4.4.47' Libraries/symfony-http-client.phar",
+      "vendor/bin/phar-composer build 'symfony/dom-crawler=4.4.45' Libraries/symfony-dom-crawler.phar",
+      "vendor/bin/phar-composer build 'symfony/css-selector=4.4.44' Libraries/symfony-css-selector.phar",
+      "chmod -x Libraries/*"
+    ]
   }
 }
