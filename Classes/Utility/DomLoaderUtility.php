@@ -9,7 +9,9 @@ use Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 class DomLoaderUtility
@@ -22,6 +24,17 @@ class DomLoaderUtility
     protected $filter;
 
     protected $processor;
+
+    public function __construct()
+    {
+        if (!class_exists('\Symfony\Component\DomCrawler\Crawler')) {
+            @include 'phar://' . ExtensionManagementUtility::extPath('bw_cache_uri') . 'Libraries/symfony-dom-crawler.phar/vendor/autoload.php';
+        }
+
+        if (!class_exists('\Symfony\Component\HttpClient\HttpClient')) {
+            @include 'phar://' . ExtensionManagementUtility::extPath('bw_cache_uri') . 'Libraries/symfony-http-client.phar/vendor/autoload.php';
+        }
+    }
 
     /**
      * @return mixed
@@ -103,7 +116,7 @@ class DomLoaderUtility
         }
 
         // get processor options from typoscript
-        $configurationManager = GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+        $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
         $typoscript = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
         $processorOptions = isset($typoscript['plugin.']['tx_bwcacheuri.']) && isset($typoscript['plugin.']['tx_bwcacheuri.']['settings.']['postProcessors.'][$this->processor . '.']['options.']) ? $typoscript['plugin.']['tx_bwcacheuri.']['settings.']['postProcessors.'][$this->processor . '.']['options.'] : [];
 
