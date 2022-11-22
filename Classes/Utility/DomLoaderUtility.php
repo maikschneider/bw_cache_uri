@@ -34,6 +34,10 @@ class DomLoaderUtility
         if (!class_exists('\Symfony\Component\HttpClient\HttpClient')) {
             @include 'phar://' . ExtensionManagementUtility::extPath('bw_cache_uri') . 'Libraries/symfony-http-client.phar/vendor/autoload.php';
         }
+
+        if (!class_exists('\Symfony\Component\CssSelector\CssSelectorConverter')) {
+            @include 'phar://' . ExtensionManagementUtility::extPath('bw_cache_uri') . 'Libraries/symfony-css-selector.phar/vendor/autoload.php';
+        }
     }
 
     /**
