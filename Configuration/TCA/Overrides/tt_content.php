@@ -70,4 +70,17 @@ call_user_func(function () {
         'showitem' => 'dom_uri,--linebreak--,dom_filter,--linebreak--,dom_processor'
     ];
 
+    // B. Add post processors from TypoScript setting
+    $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class);
+    $typoscript = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
+
+    if (isset($typoscript['plugin.']['tx_bwcacheuri.'])) {
+        foreach ($typoscript['plugin.']['tx_bwcacheuri.']['settings.']['postProcessors.'] as $class => $postProcessor) {
+            $GLOBALS['TCA']['tt_content']['columns']['dom_processor']['config']['items'][] = [
+                $postProcessor['label'],
+                substr($class, 0, -1)
+            ];
+        }
+    }
+
 });
